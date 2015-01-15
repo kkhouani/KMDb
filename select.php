@@ -33,7 +33,7 @@ include ("display_movies.php");
 
 // $max_items = maximaal aantal items
 // die op pagina getoond wordt
-$max_items 	= 12;
+$max_items 	= 18;
 $page	= 1;
 if (isset($_GET['page'])) {
 	$page = $_GET['page'];
@@ -182,7 +182,7 @@ foreach ($_GET as $key => $value) {
 
 if ($num_of_pages > 1) {
 	echo '<div class="pagination">';
-	echo '<a href="/select.php" class="pagination_item">First</a>';
+	echo '<a href="/select.php" class="pagination_item first">First</a>';
 		for ($i = 1; $i <= $num_of_pages; $i++) { 
 			if ($i >= $currentPage - 2 && $i <= $currentPage + 2) {
 				if ($i == $currentPage) {
@@ -192,7 +192,7 @@ if ($num_of_pages > 1) {
 				}
 			}
 		}
-	echo '<a href="/select.php?page='.$num_of_pages.'" class="pagination_item">Last</a>';
+	echo '<a href="/select.php?page='.$num_of_pages.'" class="pagination_item last">Last</a>';
 	echo '</div>';
 }
 
@@ -251,6 +251,7 @@ mysqli_close($connection);
 <script src="scripts/jquery.min.js"></script>
 <script src="scripts/jquery-ui.js"></script>
 <script src="scripts/script.js"></script>
+<script src="scripts/modernizr.custom.js"></script>
 
 </body>
 </html>
