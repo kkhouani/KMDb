@@ -3,7 +3,7 @@
 ?>
 
   <div class="movie">
-		<div class="column">
+		<div class="overlay">
 			<a class="caption caption-3" href="<?=$row['url_movie']?>" data-title="<?=$row['title_movie']?>" data-description="<?=$description_movie?>">
 				<img src="<?=$row['image_movie']?>" alt="<?=$row['title_movie']?>">
 			</a>

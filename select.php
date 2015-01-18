@@ -6,11 +6,13 @@
 <head>
 	<meta charset="utf-8">
 	<title>Khalid's Movie Database</title>
-	<link rel="stylesheet" href="style/style.css">
 	<link rel="stylesheet" href="style/jquery-ui.css">
+	<link rel="stylesheet" href="style/style.css">
+	<link rel="stylesheet" href="style/menu.css">
+	<script src="scripts/modernizr.custom.js"></script>
 </head>
 <body>
-<div id="site-wrapper">
+<div id="st-container" class="st-container">
 
 <?php
 
@@ -139,87 +141,117 @@ if (!empty($_GET['minruntime']) && !empty($_GET['maxruntime'])) {
 	$query .= " AND runtime_movie >= ".$minruntime." AND runtime_movie <= ".$maxruntime.""; 
 }
 
-
-/* 				     */
-/*    SHOW     */
-/* 	MOVIEINFO	 */
-
-
-$sql = $query . " ORDER BY date_id DESC LIMIT $startnumber, $max_items";
-$result = mysqli_query($connection, $sql);
-if($result === false){
-	echo mysqli_error($connection);
-}
-
-echo "<div class='movies'>";
-	if (mysqli_num_rows($result) > 0) {
-	    // output data of each row
-	    while($row = mysqli_fetch_assoc($result)) {
-	    	displayMovie($row);
-	    }
-	} else {
-	    echo "0 results";
-	}
-echo "</div>";
-
-
-/* 					  */
-/* PAGINATION */
-/* 		    		*/
-
-
-$result = mysqli_query($connection, $query);
-$row_count = mysqli_num_rows($result);
-$num_of_pages = ceil($row_count/$max_items); 
-$currentPage = isset ($_GET["page"]) ? $_GET["page"] : 1;
-
-$query = "";
-foreach ($_GET as $key => $value) {
-	if ($key != 'page') {
-		$query = $query . "&". $key . "=" . $value;
-	}	
-}
-
-if ($num_of_pages > 1) {
-	echo '<div class="pagination">';
-	echo '<a href="/select.php" class="pagination_item first">First</a>';
-		for ($i = 1; $i <= $num_of_pages; $i++) { 
-			if ($i >= $currentPage - 2 && $i <= $currentPage + 2) {
-				if ($i == $currentPage) {
-					echo '<a href="#" class="pagination_item active">' . $i .' </a>';
-				} else {
-					echo '<a href="/select.php?page='.$i.''.$query.'" class="pagination_item">'.$i.' </a>';
-				}
-			}
-		}
-	echo '<a href="/select.php?page='.$num_of_pages.'" class="pagination_item last">Last</a>';
-	echo '</div>';
-}
-
 /* 					   */
 /*  SHOW FORM  */
 /* 		    		 */
 
-// get form data vanuit get_data.php
-$data = getFormData();
+?>
 
-// verzend data naar filter_form.php
-displayForm(
-	$data['genre'], 
-	$data['type'], 
-	$data['actor'], 
-	$data['director'], 
-	$data['minruntime'], 
-	$data['maxruntime'], 
-	$data['imdb_lowest_rating'], 
-	$data['imdb_highest_rating'], 
-	$data['minrating'], 
-	$data['maxrating'], 
-	$data['lowest_year'], 
-	$data['highest_year']
-);
+	<nav class="st-menu st-effect-2" id="menu-2">
+		<?php 
+			// get form data vanuit get_data.php
+			$data = getFormData();
+
+			// verzend data naar filter_form.php
+			displayForm(
+				$data['genre'], 
+				$data['type'], 
+				$data['actor'], 
+				$data['director'], 
+				$data['minruntime'], 
+				$data['maxruntime'], 
+				$data['imdb_lowest_rating'], 
+				$data['imdb_highest_rating'], 
+				$data['minrating'], 
+				$data['maxrating'], 
+				$data['lowest_year'], 
+				$data['highest_year']
+			);
+		?>
+
+		<div class="inner-wrap">
+			<input id="search" type="text" name="search" onkeyup="getMovies(this.value)" placeholder="Search movie" />
+			<div id="results"></div>
+		</div>
+	</nav>
+		
+	<div class="st-pusher">
+		<div class="st-content">
+			<div class="st-content-inner"><!-- extra div for emulating position:fixed of the menu -->
+				<div class="main clearfix">
+
+					<!-- Button for the Menu -->
+					<div id="st-trigger-effects" class="column">
+						<button data-effect="st-effect-2">MENU</button>
+					</div>
+
+					<?php
+						/* 				     */
+						/*    SHOW     */
+						/* 	MOVIEINFO	 */
 
 
+						$sql = $query . " ORDER BY date_id DESC LIMIT $startnumber, $max_items";
+						$result = mysqli_query($connection, $sql);
+						if($result === false){
+							echo mysqli_error($connection);
+						}
+
+						echo "<div class='movies'>";
+							if (mysqli_num_rows($result) > 0) {
+							    // output data of each row
+							    while($row = mysqli_fetch_assoc($result)) {
+							    	displayMovie($row);
+							    }
+							} else {
+							    echo "0 results";
+							}
+						echo "</div>";
+
+
+						/* 					  */
+						/* PAGINATION */
+						/* 		    		*/
+
+
+						$result = mysqli_query($connection, $query);
+						$row_count = mysqli_num_rows($result);
+						$num_of_pages = ceil($row_count/$max_items); 
+						$currentPage = isset ($_GET["page"]) ? $_GET["page"] : 1;
+
+						$query = "";
+						foreach ($_GET as $key => $value) {
+							if ($key != 'page') {
+								$query = $query . "&". $key . "=" . $value;
+							}	
+						}
+
+						if ($num_of_pages > 1) {
+							echo '<div class="pagination">';
+							echo '<a href="/select.php" class="pagination_item first">First</a>';
+								for ($i = 1; $i <= $num_of_pages; $i++) { 
+									if ($i >= $currentPage - 2 && $i <= $currentPage + 2) {
+										if ($i == $currentPage) {
+											echo '<a href="#" class="pagination_item active">' . $i .' </a>';
+										} else {
+											echo '<a href="/select.php?page='.$i.''.$query.'" class="pagination_item">'.$i.' </a>';
+										}
+									}
+								}
+							echo '<a href="/select.php?page='.$num_of_pages.'" class="pagination_item last">Last</a>';
+							echo '</div>';
+						} 
+					?>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+<?php
 /* 					  */
 /* 	   END  	*/
 /* CONNECTION */
@@ -228,13 +260,6 @@ displayForm(
 mysqli_close($connection);
 
 ?>
-
-
-
-<div class="inner-wrap">
-	<input id="search" type="text" name="search" onkeyup="getMovies(this.value)" placeholder="Search movie" />
-	<div id="results"></div>
-</div>
 
 <script type="text/javascript">
 	var lowest_year = <?php echo $data['lowest_year'] ?>;
@@ -250,8 +275,8 @@ mysqli_close($connection);
 </script>
 <script src="scripts/jquery.min.js"></script>
 <script src="scripts/jquery-ui.js"></script>
+<script src="scripts/classie.js"></script>
+<script src="scripts/sidebarEffects.js"></script>
 <script src="scripts/script.js"></script>
-<script src="scripts/modernizr.custom.js"></script>
-
 </body>
 </html>

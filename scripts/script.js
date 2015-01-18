@@ -1,3 +1,8 @@
+$( document ).ready(function() {
+  $('.movie').fadeIn();
+  $('.pagination').fadeIn();
+});
+
 function getMovies(value) {
 	$.get("search.php", {search:value}, function(results) {
 		//If the input field is empty, hide results div
@@ -90,13 +95,44 @@ $(function() {
 });
 
 
-function sendData() {
-	$('#minyear').val(yearvalues[0]);
-	$('#maxyear').val(yearvalues[1]);
-	$('#minrating').val(ratingvalues[0]);
-	$('#maxrating').val(ratingvalues[1]);
-	$('#min_imdbrating').val(imdbratingvalues[0]);
-	$('#max_imdbrating').val(imdbratingvalues[1]);
-	$('#minruntime').val(runtimevalues[0]);
-	$('#maxruntime').val(runtimevalues[1]);
+function sendData() { 
+  $('#st-container').removeClass('st-menu-open');
+  setTimeout( function() {
+    $('#minyear').val(yearvalues[0]);
+    $('#maxyear').val(yearvalues[1]);
+    $('#minrating').val(ratingvalues[0]);
+    $('#maxrating').val(ratingvalues[1]);
+    $('#min_imdbrating').val(imdbratingvalues[0]);
+    $('#max_imdbrating').val(imdbratingvalues[1]);
+    $('#minruntime').val(runtimevalues[0]);
+    $('#maxruntime').val(runtimevalues[1]);
+  }, 100 );
 }
+
+$('#submitbutton').click(function(event){
+  event.preventDefault();
+    $('#st-container').removeClass('st-menu-open');
+    $('.movie').fadeOut();
+    $('.pagination').fadeOut();
+    setTimeout( function() {
+      $('#minyear').val(yearvalues[0]);
+      $('#maxyear').val(yearvalues[1]);
+      $('#minrating').val(ratingvalues[0]);
+      $('#maxrating').val(ratingvalues[1]);
+      $('#min_imdbrating').val(imdbratingvalues[0]);
+      $('#max_imdbrating').val(imdbratingvalues[1]);
+      $('#minruntime').val(runtimevalues[0]);
+      $('#maxruntime').val(runtimevalues[1]);
+      $('form').submit();
+    }, 500 );
+});
+
+$('#resetbutton').click(function(event){
+  event.preventDefault();
+  $('#st-container').removeClass('st-menu-open');
+  $('.movie').fadeOut();
+  $('.pagination').fadeOut();
+  setTimeout( function() {
+    window.location.href = '/select.php';
+  }, 500 );
+});

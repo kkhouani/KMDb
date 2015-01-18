@@ -1,25 +1,30 @@
 <?php function displayForm($genre, $type, $actor, $director, $minruntime, $maxruntime, $min_imdbrating, $max_imdbrating, $minrating, $maxrating, $minyear, $maxyear) { ?>
 <form class="filter" action="" method="GET">
 
-	<h2>Filter genre</h2>	
+	<h3>Filter genre</h3>	
+	<ul class="filter-genre clearfix">
 	<?php foreach ($genre as $genretype) { ?>
 	  <?php if(in_array($genretype, $_GET['genre'], true)){ ?>
-			<input type="checkbox" name="genre[]" id="genre" checked="checked" value="<?=$genretype?>"><?=$genretype?><br/>
+			<li><input type="checkbox" name="genre[]" id="genre" checked="checked" value="<?=$genretype?>"><?=$genretype?></li>
     <?php } else { ?>
-			<input type="checkbox" name="genre[]" id="genre" value="<?=$genretype?>"><?=$genretype?><br/>
+			<li><input type="checkbox" name="genre[]" id="genre" value="<?=$genretype?>"><?=$genretype?></li>
 		<?php } ?>
 	<?php } ?>
+	</ul>
 
-	<h2>Filter movietypes</h2>
+	<h3>Filter movietypes</h3>
+	<select name="type">
+	<option value="">Select movietype...</option>
 	<?php foreach ($type as $movietype) { ?>
     <?php if($_GET['type'] == $movietype){ ?>
-  		<input type="radio" name="type" id="type" checked="checked" value="<?=$_GET['type']?>"><?=$_GET['type']?><br/>
+	    <option value="<?=$_GET['type']?>" selected="selected"><?=$_GET['type']?></option>
     <?php } else { ?>
-		  <input type="radio" name="type" id="type" value="<?=$movietype?>"><?=$movietype?><br/>
+			<option value="<?=$movietype?>" ><?=$movietype?></option>
 		<?php } ?>
 	<?php } ?>
+	</select>
 
-	<h2>Actorslist</h2>
+	<h3>Actorslist</h3>
 	<select name="actors">
 	<option value="">Choose an actor...</option>
 	<?php foreach ($actor as $movieactor) {	?>
@@ -31,7 +36,7 @@
 	<?php } ?>
 	</select>
 
-	<h2>Directorslist</h2>
+	<h3>Directorslist</h3>
 	<select name="directors">
 	<option value="">Choose a director...</option>
 	<?php foreach ($director as $moviedirector) {	?>
@@ -43,7 +48,7 @@
 	<?php } ?>
 	</select>
 
-	<h2>Year range:</h2>
+	<h4>Year range:</h4>
 	<input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
 	<div id="slider-range"></div>
 	<!-- Plaats min year -->
@@ -60,7 +65,7 @@
 		<input type="hidden" id="maxyear" name="maxyear" value="<?=$maxyear?>" />
 	<?php } ?>
 
-	<h2>My rating:</h2>
+	<h4>My rating:</h4>
 	<input type="text" id="amount-2" readonly style="border:0; color:#f6931f; font-weight:bold;">
 	<div id="slider-range-2"></div>
 	<!-- Plaats min rating -->
@@ -77,7 +82,7 @@
 		<input type="hidden" id="maxrating" name="maxrating" value="10" />
 	<?php } ?>
 
-	<h2>IMDB rating:</h2>
+	<h4>IMDB rating:</h4>
 	<input type="text" id="amount-3" readonly style="border:0; color:#f6931f; font-weight:bold;">
 	<div id="slider-range-3"></div>
 	<!-- Plaats min imdb rating -->
@@ -94,7 +99,7 @@
 		<input type="hidden" id="max_imdbrating" name="max_imdbrating" value="10" />
 	<?php } ?>
 
-	<h2>Runtime in min</h2>
+	<h4>Runtime in min</h4>
 	<input type="text" id="amount-4" readonly style="border:0; color:#f6931f; font-weight:bold;">
 	<div id="slider-range-4"></div>
 	<!-- Plaats minruntime -->
@@ -112,7 +117,8 @@
 	<?php } ?>
 
 	<input type="hidden" id="submitted" name="submitted" value="true" />
-	<button type="submit" onclick="sendData()">Filter</button>
+	<button id="submitbutton" type="submit">Filter</button>
+	<a id="resetbutton" href="/select.php" value="Reset Filters">Reset Filters</a>
 
-</form><br/>
+</form>
 <?php } ?>
