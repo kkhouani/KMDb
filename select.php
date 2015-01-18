@@ -9,6 +9,7 @@
 	<link rel="stylesheet" href="style/jquery-ui.css">
 	<link rel="stylesheet" href="style/style.css">
 	<link rel="stylesheet" href="style/menu.css">
+	<!-- <link rel="stylesheet" href="style/dialog-sally.css" /> -->
 	<script src="scripts/modernizr.custom.js"></script>
 </head>
 <body>
@@ -242,6 +243,14 @@ if (!empty($_GET['minruntime']) && !empty($_GET['maxruntime'])) {
 							echo '</div>';
 						} 
 					?>
+
+<!-- 					<div id="somedialog" class="dialog">
+						<div class="dialog__overlay"></div>
+						<div class="dialog__content">
+							<h2><strong>Howdy</strong>, I'm a dialog box</h2><div><button class="action" data-dialog-close>Close</button></div>
+						</div>
+					</div> -->
+
 				</div>
 			</div>
 		</div>
@@ -260,7 +269,7 @@ if (!empty($_GET['minruntime']) && !empty($_GET['maxruntime'])) {
 mysqli_close($connection);
 
 ?>
-
+<!-- <script src="scripts/dialogFx.js"></script> -->
 <script type="text/javascript">
 	var lowest_year = <?php echo $data['lowest_year'] ?>;
 	var highest_year = <?php echo $data['highest_year'] ?>;
@@ -272,6 +281,16 @@ mysqli_close($connection);
 	var test_min;
 	var ratingvalues = [];
 	var imdbratingvalues = [];
+
+	// (function() {
+
+	// 	var dlgtrigger = document.querySelector( '[data-dialog]' ),
+	// 		somedialog = document.getElementById( dlgtrigger.getAttribute( 'data-dialog' ) ),
+	// 		dlg = new DialogFx( somedialog );
+
+	// 	dlgtrigger.addEventListener( 'click', dlg.toggle.bind(dlg) );
+
+	// })();
 </script>
 <script src="scripts/jquery.min.js"></script>
 <script src="scripts/jquery-ui.js"></script>

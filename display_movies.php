@@ -25,6 +25,6 @@
 			iMDB rating: <?=$row['imdb_rating']?><br/>
 			Rated <?=$row['date_rating']?><br/>
 			<br/> 
-		</div> 
+		</div> trigger" data-dialog="somedialog"
 	</div> */ ?>
 <?php } ?>

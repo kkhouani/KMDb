@@ -96,8 +96,16 @@ select {
 }
 
 .ui-slider-horizontal .ui-slider-handle {
-	top: -0.15em;
+	top: -0.1em;
 	margin-left: -.3em;
+}
+
+.ui-widget-header {
+	background-color: #0083ab;
+}
+
+.ui-widget-content {
+	border: none;
 }
 
 /* Pagination */
