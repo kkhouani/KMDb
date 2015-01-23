@@ -8,6 +8,10 @@ body, html, * {
 	font-family: 'Lato', sans-serif;
 }
 
+*:focus {
+	outline:0;
+}
+
 ul, li {
 	list-style: none;
 	padding: 0;
@@ -172,6 +176,11 @@ select {
 
 .movietitle {
   background: rgba(43, 48, 59, 1.0);
+}
+
+.movietitle a {
+	color: #C8C8C8;
+	font-weight: 300;
 }
 
 #search {

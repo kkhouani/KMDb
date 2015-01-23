@@ -206,10 +206,6 @@ button:hover {
 	background: #f27545;
 }
 
-button:focus {
-	outline:0;
-}
-
 #resetbutton {
 	float:right;
 	padding: 0.6em 0.8em;
