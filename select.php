@@ -194,6 +194,8 @@ if (!empty($_GET['minruntime']) && !empty($_GET['maxruntime'])) {
 
 						$sql = $query . " ORDER BY date_id DESC LIMIT $startnumber, $max_items";
 						$result = mysqli_query($connection, $sql);
+						$khalidsrating = $data['minrating'];
+
 						if($result === false){
 							echo mysqli_error($connection);
 						}
@@ -235,7 +237,7 @@ if (!empty($_GET['minruntime']) && !empty($_GET['maxruntime'])) {
 
 						if ($num_of_pages > 1) {
 							echo '<div class="pagination">';
-							echo '<a href="/select.php" class="pagination_item first">First</a>';
+							echo '<a href="/select.php?page=1'.$query.'" class="pagination_item first">First</a>';
 								for ($i = 1; $i <= $num_of_pages; $i++) { 
 									if ($i >= $currentPage - 2 && $i <= $currentPage + 2) {
 										if ($i == $currentPage) {
@@ -245,7 +247,7 @@ if (!empty($_GET['minruntime']) && !empty($_GET['maxruntime'])) {
 										}
 									}
 								}
-							echo '<a href="/select.php?page='.$num_of_pages.'" class="pagination_item last">Last</a>';
+							echo '<a href="/select.php?page='.$num_of_pages.''.$query.'" class="pagination_item last">Last</a>';
 							echo '</div>';
 						} 
 					?>

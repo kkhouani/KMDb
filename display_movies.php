@@ -5,7 +5,8 @@
   <div class="movie">
 		<div class="overlay">
 			<a class="caption caption-3" href="<?=$row['url_movie']?>" data-title="<?=$row['title_movie']?>" data-description="<?=$description_movie?>">
-				<img src="<?=$row['image_movie']?>" alt="<?=$row['title_movie']?>">
+				<div class="myrating"><?=$row['user_rating']?></div>
+				<img class="movieposter" src="<?=$row['image_movie']?>" alt="<?=$row['title_movie']?>">
 			</a>
 		</div>
 	</div>
