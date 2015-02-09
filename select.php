@@ -223,8 +223,14 @@ if (!empty($_GET['minruntime']) && !empty($_GET['maxruntime'])) {
 						$query = "";
 						foreach ($_GET as $key => $value) {
 							if ($key != 'page') {
-								$query = $query . "&". $key . "=" . $value;
-							}	
+								if ($key != 'genre') {
+									$query = $query . "&". $key . "=" . $value;
+								}	else {
+									for ($i=0; $i < count($value); $i++) { 
+										$query = $query . "&". $key . "%5B%5D=" . $value[$i]; 
+									}
+								}
+							}
 						}
 
 						if ($num_of_pages > 1) {
