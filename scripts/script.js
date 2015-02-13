@@ -19,18 +19,38 @@ function getMovies(value) {
 	});
 }
 
-function getInfo(value) {
-  $.get("getinfo.php", {search:value}, function(results) {
+function getActor(actor) {
+  var selectedType = $( "#type-dropdown option:selected" ).text();
+  $.get("getactors.php", {search:selectedType}, function(results) {
+    console.log(selectedType);
     //If the input field is empty, hide results div
-    if(value != ""){
+    if(selectedType != ""){
       //If the data is null, show no results message
       if(results == "") {
-        $('#results').stop(true,true).fadeIn(200).html("No results found. Please try again.");
+        $('#actor-dropdown').stop(true,true).fadeIn(200).html("No results found. Please try again.");
       } else {
-        $('#results').stop(true,true).fadeIn(200).html(results);
+        $('#actor-dropdown').stop(true,true).fadeIn(200).html(results);
       }
     } else {
-      $('#results').hide();
+      $('#actor-dropdown').hide();
+    }
+  });
+}
+
+function getDirector() {
+  var selectedActor = $( "#actor-dropdown option:selected" ).text();
+  $.get("getdirector.php", {search:selectedActor}, function(results) {
+    console.log(selectedActor);
+    //If the input field is empty, hide results div
+    if(selectedActor != ""){
+      //If the data is null, show no results message
+      if(results == "") {
+        $('#director-dropdown').stop(true,true).fadeIn(200).html("No results found. Please try again.");
+      } else {
+        $('#director-dropdown').stop(true,true).fadeIn(200).html(results);
+      }
+    } else {
+      $('#director-dropdown').hide();
     }
   });
 }

@@ -165,7 +165,7 @@ select {
   padding: 10px;
   position:absolute;
   text-align:center;
-  top:90px;
+  top:50px;
   width:100%;
 	font-size: 12px;
 	font-weight: 300;
@@ -188,7 +188,7 @@ select {
 	font-weight: 300;
 	font-family: 'Lato', sans-serif;
 	margin: auto;
-	margin-top: 5px;
+	margin-top: 2px;
   outline:none;
   padding: 10px;
   text-align:center;
