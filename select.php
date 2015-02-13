@@ -172,11 +172,7 @@ if (!empty($_GET['minruntime']) && !empty($_GET['maxruntime'])) {
 
 		<div class="inner-wrap">
 			<input id="search" type="text" name="search" onkeyup="getMovies(this.value)" placeholder="Search movie" />
-			<div id="results"></div>
-		</div>
-
-		<div class="inner-wrap">
-			<input id="search" type="text" name="search" onkeyup="getInfo(this.value)" placeholder="Search movie" />
+			<input id="search" type="text" name="search" onkeyup="getInfo(this.value)" placeholder="Search director" />
 			<div id="results"></div>
 		</div>
 	</nav>

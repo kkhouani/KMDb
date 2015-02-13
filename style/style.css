@@ -153,13 +153,6 @@ select {
 /* live-search */
 .inner-wrap {
   position:relative;
-  border: 1px solid;
-}
-
-#live-search {
-  padding-top: 30px;
-  margin: 0 auto;
-  width:55%;
 }
 
 #results {
@@ -172,7 +165,7 @@ select {
   padding: 10px;
   position:absolute;
   text-align:center;
-  top:50px;
+  top:90px;
   width:100%;
 	font-size: 12px;
 	font-weight: 300;
@@ -195,11 +188,15 @@ select {
 	font-weight: 300;
 	font-family: 'Lato', sans-serif;
 	margin: auto;
+	margin-top: 5px;
   outline:none;
   padding: 10px;
   text-align:center;
-  width:100%;}
-  #search:focus {
+  width:100%;
+  border: 1px solid;
+}
+
+#search:focus {
   box-shadow: 0 0 15px #FFF;
   transition: all ease .5s;
   background-color: #C8C8C8;
