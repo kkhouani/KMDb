@@ -19,6 +19,22 @@ function getMovies(value) {
 	});
 }
 
+function getInfo(value) {
+  $.get("getinfo.php", {search:value}, function(results) {
+    //If the input field is empty, hide results div
+    if(value != ""){
+      //If the data is null, show no results message
+      if(results == "") {
+        $('#results').stop(true,true).fadeIn(200).html("No results found. Please try again.");
+      } else {
+        $('#results').stop(true,true).fadeIn(200).html(results);
+      }
+    } else {
+      $('#results').hide();
+    }
+  });
+}
+
 $(function() {
   $( "#slider-range" ).slider({
     range: true,

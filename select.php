@@ -9,7 +9,6 @@
 	<link rel="stylesheet" href="style/jquery-ui.css">
 	<link rel="stylesheet" href="style/style.css">
 	<link rel="stylesheet" href="style/menu.css">
-	<!-- <link rel="stylesheet" href="style/dialog-sally.css" /> -->
 	<script src="scripts/modernizr.custom.js"></script>
 
 </head>
@@ -175,6 +174,11 @@ if (!empty($_GET['minruntime']) && !empty($_GET['maxruntime'])) {
 			<input id="search" type="text" name="search" onkeyup="getMovies(this.value)" placeholder="Search movie" />
 			<div id="results"></div>
 		</div>
+
+		<div class="inner-wrap">
+			<input id="search" type="text" name="search" onkeyup="getInfo(this.value)" placeholder="Search movie" />
+			<div id="results"></div>
+		</div>
 	</nav>
 		
 	<div class="st-pusher">
@@ -188,10 +192,10 @@ if (!empty($_GET['minruntime']) && !empty($_GET['maxruntime'])) {
 					</div>
 
 					<?php
-						/* 				     */
-						/*    SHOW     */
-						/* 	MOVIEINFO	 */
-
+			
+/* 				     */
+/*    SHOW     */
+/* 	MOVIEINFO	 */ 			
 
 						$sql = $query . " ORDER BY date_id DESC LIMIT $startnumber, $max_items";
 						$result = mysqli_query($connection, $sql);
@@ -213,9 +217,9 @@ if (!empty($_GET['minruntime']) && !empty($_GET['maxruntime'])) {
 						echo "</div>";
 
 
-						/* 					  */
-						/* PAGINATION */
-						/* 		    		*/
+/* 					  */
+/* PAGINATION */
+/* 		    		*/
 
 
 						$result = mysqli_query($connection, $query);
@@ -253,13 +257,6 @@ if (!empty($_GET['minruntime']) && !empty($_GET['maxruntime'])) {
 						} 
 					?>
 
-<!-- 					<div id="somedialog" class="dialog">
-						<div class="dialog__overlay"></div>
-						<div class="dialog__content">
-							<h2><strong>Howdy</strong>, I'm a dialog box</h2><div><button class="action" data-dialog-close>Close</button></div>
-						</div>
-					</div> -->
-
 				</div>
 			</div>
 		</div>
@@ -278,7 +275,6 @@ if (!empty($_GET['minruntime']) && !empty($_GET['maxruntime'])) {
 mysqli_close($connection);
 
 ?>
-<!-- <script src="scripts/dialogFx.js"></script> -->
 <script type="text/javascript">
 	var lowest_year = <?php echo $data['lowest_year'] ?>;
 	var highest_year = <?php echo $data['highest_year'] ?>;
@@ -290,16 +286,6 @@ mysqli_close($connection);
 	var test_min;
 	var ratingvalues = [];
 	var imdbratingvalues = [];
-
-	// (function() {
-
-	// 	var dlgtrigger = document.querySelector( '[data-dialog]' ),
-	// 		somedialog = document.getElementById( dlgtrigger.getAttribute( 'data-dialog' ) ),
-	// 		dlg = new DialogFx( somedialog );
-
-	// 	dlgtrigger.addEventListener( 'click', dlg.toggle.bind(dlg) );
-
-	// })();
 </script>
 <script src="scripts/jquery.min.js"></script>
 <script src="scripts/jquery-ui.js"></script>
