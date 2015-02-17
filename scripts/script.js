@@ -19,42 +19,6 @@ function getMovies(value) {
 	});
 }
 
-function getActor(actor) {
-  var selectedType = $( "#type-dropdown option:selected" ).text();
-  $.get("getactors.php", {search:selectedType}, function(results) {
-    console.log(selectedType);
-    //If the input field is empty, hide results div
-    if(selectedType != ""){
-      //If the data is null, show no results message
-      if(results == "") {
-        $('#actor-dropdown').stop(true,true).fadeIn(200).html("No results found. Please try again.");
-      } else {
-        $('#actor-dropdown').stop(true,true).fadeIn(200).html(results);
-      }
-    } else {
-      $('#actor-dropdown').hide();
-    }
-  });
-}
-
-function getDirector() {
-  var selectedActor = $( "#actor-dropdown option:selected" ).text();
-  $.get("getdirector.php", {search:selectedActor}, function(results) {
-    console.log(selectedActor);
-    //If the input field is empty, hide results div
-    if(selectedActor != ""){
-      //If the data is null, show no results message
-      if(results == "") {
-        $('#director-dropdown').stop(true,true).fadeIn(200).html("No results found. Please try again.");
-      } else {
-        $('#director-dropdown').stop(true,true).fadeIn(200).html(results);
-      }
-    } else {
-      $('#director-dropdown').hide();
-    }
-  });
-}
-
 $(function() {
   $( "#slider-range" ).slider({
     range: true,

@@ -13,7 +13,7 @@
 	</ul>
 
 	<h3>Filter movietypes</h3>
-	<select id="type-dropdown" name="type" onchange="getActor(this.text)">
+	<select name="type">
 	<option value="">Select movietype...</option>
 	<?php foreach ($type as $movietype) { ?>
     <?php if($_GET['type'] == $movietype){ ?>
@@ -25,7 +25,7 @@
 	</select>
 
 	<h3>Actorslist</h3>
-	<select id="actor-dropdown" name="actors" onchange="getDirector(this.text)">
+	<select name="actors">
 	<option value="">Choose an actor...</option>
 	<?php foreach ($actor as $movieactor) {	?>
     <?php if($_GET['actors'] == $movieactor){ ?>
@@ -37,7 +37,7 @@
 	</select>
 
 	<h3>Directorslist</h3>
-	<select id="director-dropdown" name="directors">
+	<select name="directors">
 	<option value="">Choose a director...</option>
 	<?php foreach ($director as $moviedirector) {	?>
     <?php if($_GET['directors'] == $moviedirector){ ?>
