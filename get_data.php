@@ -1,8 +1,6 @@
 <?php 
 function getFormData(){
     global $connection;
-    //define array empty
-    $array = [];
 
     // Haal alle genre's op uit movieDatabase
     $query = "SELECT genre_movie FROM movieDatabase";
@@ -133,6 +131,8 @@ function getFormData(){
     }
 
     /* VARIABLES */
+    //define array empty
+    $array = array();
 
     // plaats unieke genre in form
     $genre = array_unique($moviegenres);

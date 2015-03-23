@@ -5,7 +5,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Crawl & Update Movies</title>
+	<title>Crawl &amp; Update Movies</title>
 	<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 	<link rel="stylesheet" href="style/style.css">
 </head>
@@ -64,7 +64,7 @@ foreach ( $results['results']['movieDatabase'] as $value ) {
 		    curl_setopt($ch, CURLOPT_HEADER, 0);
 		    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 		    curl_setopt($ch, CURLOPT_URL, $url);
-		    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, TRUE);       
+		    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, FALSE);       
 
 		    $data = curl_exec($ch);
 		    $data = json_decode($data, true);

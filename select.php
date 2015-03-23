@@ -27,7 +27,7 @@ global $connection;
 include ("get_data.php");
 include ("filter_form.php");
 include ("display_movies.php");
-
+include ("display_movieinfo.php");
 
 /* 					  */
 /* PAGINATION */
@@ -190,7 +190,7 @@ if (!empty($_GET['minruntime']) && !empty($_GET['maxruntime'])) {
 			
 /* 				     */
 /*    SHOW     */
-/* 	MOVIEINFO	 */ 			
+/* 	 MOVIES    */ 			
 
 						$sql = $query . " ORDER BY date_id DESC LIMIT $startnumber, $max_items";
 						$result = mysqli_query($connection, $sql);
@@ -256,6 +256,32 @@ if (!empty($_GET['minruntime']) && !empty($_GET['maxruntime'])) {
 			</div>
 		</div>
 	</div>
+
+	<?php
+
+	/* 				     */
+	/*    SHOW     */
+	/* 	MOVIEINFO	 */ 			
+
+	$sql = "SELECT id FROM movieDatabase";
+	$result = mysqli_query($connection, $sql);
+
+	if($result === false){
+		echo mysqli_error($connection);
+	}
+
+	if (mysqli_num_rows($result) > 0) {
+    // output data of each row
+    while($row = mysqli_fetch_assoc($result)) {	
+   	$movieid = $row['id'] ?>
+      <div class="md-modal md-effect" id="modal-<?=$movieid?>">
+	      <?displayMovieInfo($movieid);?>
+			</div> <?php
+		} 
+	} ?>
+
+	<div class="md-overlay"></div><!-- the overlay element -->
+
 </div>
 
 
@@ -286,6 +312,7 @@ mysqli_close($connection);
 <script src="scripts/jquery-ui.js"></script>
 <script src="scripts/classie.js"></script>
 <script src="scripts/sidebarEffects.js"></script>
+<script src="scripts/modalEffects.js"></script>
 <script src="scripts/script.js"></script>
 </body>
 </html>

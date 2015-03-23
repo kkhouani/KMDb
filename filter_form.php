@@ -3,8 +3,9 @@
 
 	<h3>Filter genre</h3>	
 	<ul class="filter-genre clearfix">
+	<?php $get_genre = is_array($_GET['genre']) ? $_GET['genre'] : array($_GET['genre']); ?>
 	<?php foreach ($genre as $genretype) { ?>
-	  <?php if(in_array($genretype, $_GET['genre'], true)){ ?>
+	  <?php if(in_array($genretype, $get_genre, true)){ ?>
 			<li><input type="checkbox" name="genre[]" id="genre" checked="checked" value="<?=$genretype?>"><?=$genretype?></li>
     <?php } else { ?>
 			<li><input type="checkbox" name="genre[]" id="genre" value="<?=$genretype?>"><?=$genretype?></li>
