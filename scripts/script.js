@@ -3,6 +3,13 @@ $( document ).ready(function() {
   $('.pagination').fadeIn();
 });
 
+function getMovieID(value) {
+  $.get("display_movieinfo.php", {movieid:value}, function(results) {
+    console.log(value);
+    $('#modalwindow').html(results);
+  });
+}
+
 function getMovies(value) {
 	$.get("search.php", {search:value}, function(results) {
 		//If the input field is empty, hide results div

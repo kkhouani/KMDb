@@ -7,7 +7,7 @@
 		<div class="overlay">
 			<div class="caption caption-3" data-title="<?=$title_movie?>" data-description="<?=$description_movie?>">
 				<div class="myrating"><?=$row['user_rating']?></div>
-				<img class="movieposter md-trigger" data-modal="modal-<?=$row['id']?>" src="<?=$row['image_movie']?>" alt="<?=$row['title_movie']?>">
+				<img id="movieposter" class="md-trigger" onclick="getMovieID(<?=$row['id']?>)" data-modal="modal-<?=$row['id']?>" src="<?=$row['image_movie']?>" alt="<?=$row['title_movie']?>">
 			</div>
 		</div>
 	</div>

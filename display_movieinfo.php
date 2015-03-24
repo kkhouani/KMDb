@@ -1,17 +1,21 @@
-<?php function displayMovieInfo($movieid) {	
+<?php
+	
+	include ("connection.php");
+
 	global $connection;
+
+	$movieid = 1;
+
+	$movieid = mysqli_real_escape_string($connection, $_GET['movieid']);
 
 	$sql = "SELECT * FROM movieDatabase WHERE id LIKE $movieid";
 	$result = mysqli_query($connection, $sql);
-	
-	if ($result === false) {
-		echo mysqli_error($connection);
-	}
 
+  echo '<div class="md-modal md-effect" id="modal-'.$movieid.'">';
 	if (mysqli_num_rows($result) > 0) {
     // output data of each row
-    while($row = mysqli_fetch_assoc($result)) {	?>
-			<div class="md-content">	
+    while($row = mysqli_fetch_assoc($result)) {	?> 
+      <div class="md-content">	
 				<div class="movieinfo clearfix">
 					<div class="image">
 						<img src="<?=$row['image_movie']?>" alt="<?=$row['title_movie']?>">
@@ -36,7 +40,8 @@
 						<button class="md-close">Close</button>
 					</div>
 				</div>
-			</div> <?php 
+			</div> <?
 		} 
-	} 
-} ?>
+	}
+	echo '</div>'; 
+?>

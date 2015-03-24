@@ -263,23 +263,10 @@ if (!empty($_GET['minruntime']) && !empty($_GET['maxruntime'])) {
 	/*    SHOW     */
 	/* 	MOVIEINFO	 */ 			
 
-	$sql = "SELECT id FROM movieDatabase";
-	$result = mysqli_query($connection, $sql);
-
-	if($result === false){
-		echo mysqli_error($connection);
-	}
-
-	if (mysqli_num_rows($result) > 0) {
-    // output data of each row
-    while($row = mysqli_fetch_assoc($result)) {	
-   	$movieid = $row['id'] ?>
-      <div class="md-modal md-effect" id="modal-<?=$movieid?>">
-	      <?displayMovieInfo($movieid);?>
-			</div> <?php
-		} 
-	} ?>
-
+	?>
+	<div id="modalwindow">
+		<div class="md-modal md-effect"></div>
+	</div>
 	<div class="md-overlay"></div><!-- the overlay element -->
 
 </div>
