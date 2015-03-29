@@ -1,14 +1,22 @@
 $( document ).ready(function() {
   $('.movie').fadeIn();
   $('.pagination').fadeIn();
+  $('#modalwindow').hide();
 });
 
-function getMovieID(value) {
-  $.get("display_movieinfo.php", {movieid:value}, function(results) {
-    console.log(value);
-    $('#modalwindow').html(results);
+$(function() {
+  var movieId = 1;
+      $('#modalwindow').show();
+
+  $.get("select.php", {movieID:movieId});
+  console.log(movieId);
+  $('.md-trigger').click(function() {
+    movieId = $(this).data('id');
+    console.log(movieId);
+    $('#modalwindow').show();
+    $.get("select.php", {movieID:movieId});
   });
-}
+});
 
 function getMovies(value) {
 	$.get("search.php", {search:value}, function(results) {
