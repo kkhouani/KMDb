@@ -1,20 +1,22 @@
 $( document ).ready(function() {
   $('.movie').fadeIn();
   $('.pagination').fadeIn();
-  $('#modalwindow').hide();
 });
 
 $(function() {
   var movieId = 1;
-      $('#modalwindow').show();
 
-  $.get("select.php", {movieID:movieId});
-  console.log(movieId);
+
   $('.md-trigger').click(function() {
     movieId = $(this).data('id');
-    console.log(movieId);
-    $('#modalwindow').show();
-    $.get("select.php", {movieID:movieId});
+    $.get("display_movieinfo.php", {movieID:movieId}, function(results) {
+      if(results != "") {
+        $('#modalwindow').show().html(results);
+        console.log(movieId);
+      } else {
+        $('#modalwindow').hide();
+      }
+    });
   });
 });
 
