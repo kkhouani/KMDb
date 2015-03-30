@@ -6,17 +6,22 @@ $( document ).ready(function() {
 $(function() {
   var movieId = 1;
 
-
   $('.md-trigger').click(function() {
     movieId = $(this).data('id');
     $.get("display_movieinfo.php", {movieID:movieId}, function(results) {
       if(results != "") {
+        $('.modaloverlay').fadeIn();
         $('#modalwindow').show().html(results);
         console.log(movieId);
       } else {
         $('#modalwindow').hide();
       }
     });
+  });
+
+  $('.modaloverlay').click(function() {
+    $('.modaloverlay').fadeOut();
+    $('#modalwindow').fadeOut();
   });
 });
 

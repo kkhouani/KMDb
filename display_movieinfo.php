@@ -6,8 +6,13 @@ global $connection;
 
 $movieid = mysqli_real_escape_string($connection, $_GET['movieID']);
 
+
+if ($movieid == "") {
+	$movieid = 0;
+}
+
 $sql = "SELECT * FROM movieDatabase WHERE id LIKE $movieid";
-$result = mysqli_query($connection, $sql);
+$result = mysqli_query($connection, $sql) or die(mysqli_error($connection));
 
 if (mysqli_num_rows($result) > 0) {
     // output data of each row

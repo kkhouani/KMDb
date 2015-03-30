@@ -1,9 +1,9 @@
 <?php 
 
-$servername = "localhost";
-$username = "root";
-$password = "root";
-$dbname = "movie_db";
+$servername = "db.storyfighters.nl";
+$username = "md296944db323970";
+$password = "wnVw9tI8";
+$dbname = "md296944db323970";
 
 // Create connection
 $connection = mysqli_connect($servername, $username, $password, $dbname);

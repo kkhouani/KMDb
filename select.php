@@ -266,8 +266,7 @@ if (!empty($_GET['minruntime']) && !empty($_GET['maxruntime'])) {
 	?>
 
 	<div id="modalwindow"></div>
-
-
+	<div class="modaloverlay"></div>
 
 
 <?php
