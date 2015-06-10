@@ -86,6 +86,16 @@ foreach ( $results['results']['movieDatabase'] as $value ) {
 				$image_data = file_get_contents($image);
 				$image_movie = 'data:image/' . $image_type . ';base64,' . base64_encode($image_data);
 
+				// $image_movie = 'http://'.$_SERVER['SERVER_NAME'].'/uploads/'.$id_movie.'.jpg';    
+
+				// $ch = curl_init($image);
+				// $fp = fopen($image_movie, 'wb');
+				// curl_setopt($ch, CURLOPT_FILE, $fp);
+				// curl_setopt($ch, CURLOPT_HEADER, 0);
+				// curl_exec($ch);
+				// curl_close($ch);
+				// fclose($fp);
+
 				// Plaats film in de database
 				$query = "INSERT INTO movieDatabase (title_movie, url_movie, year_movie, user_rating, imdb_rating, date_rating, type_movie, image_movie, runtime_movie, genre_movie, director_movie, actors_movie, description_movie)
 				VALUES ('".$title_movie."', '$url_movie', '$year_movie', '$user_rating', '$imdb_rating', '$date_rating', '$type_movie', '$image_movie', '$runtime_movie', '$genre_movie', '$director_movie', '$actors_movie', '$description_movie')";
