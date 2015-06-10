@@ -1,4 +1,7 @@
-<?php include ("connection.php"); ?>
+<?php 
+	include ("connection.php"); 
+	error_reporting(0);
+?>
 
 <!DOCTYPE html>
 <html lang="en">
